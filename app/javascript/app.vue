@@ -1,14 +1,23 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="memo in memos" :key="memo.id">
-        {{ memo.title }}： {{ memo.description }}
-      </li>
-    </ul>
-    <div>
-      <input v-model="title" placeholder="title">
-      <input v-model="description" placeholder="description">
+    <div class="form">
+      <div class="form-group">
+        <input v-model="title" placeholder="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <input v-model="description" placeholder="description" class="form-control">
+      </div>
       <button @click="addMemo">メモを追加</button>
+    </div>
+    <div class="flex">
+      <div v-for="memo in memos" :key="memo.id" class="card">
+        <div class="card-body">
+          <div class="card-title">
+            {{ memo.title }}
+          </div>
+          {{ memo.description }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,9 +56,3 @@ export default {
 }
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
